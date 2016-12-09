@@ -15,7 +15,7 @@ public abstract class Tile {
     public abstract Piece getPiece();
 
         //represents a tile without a piece
-    public static final class EmptyTile extends Tile{
+    public static final class EmptyTile extends Tile {
 
         EmptyTile(int coordinate) {
             super(coordinate);
@@ -33,5 +33,27 @@ public abstract class Tile {
 
     }
 
+        //represents a tile with a piece placed
+    public static final class OccupiedTile extends Tile {
+
+        Piece pieceOnTile;
+
+            //place the coordinate and the piece on the tile
+        OccupiedTile(int tileCoordinate, Piece pieceOnTile) {
+            super(tileCoordinate);
+            this.pieceOnTile = pieceOnTile;
+        }
+
+        @Override
+        public boolean isTileOccupied() {
+            return true;
+        }
+
+        @Override
+        public Piece getPiece() {
+            return this.pieceOnTile;
+        }
+
+    }
 
 }
