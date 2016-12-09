@@ -1,6 +1,11 @@
+package com.chess.engine.board;
+
 /**
  * Created by alex on 12/8/16.
  */
+
+import com.chess.engine.pieces.Piece;
+
 public abstract class Tile {
 
     int tileCoordinate;
