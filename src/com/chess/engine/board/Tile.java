@@ -8,7 +8,8 @@ import com.chess.engine.pieces.Piece;
 
 public abstract class Tile {
 
-    int tileCoordinate;
+        //only allow tile coordinate to be set in constructor
+    protected final int tileCoordinate;
 
         //give the tile an initial coordinate
     Tile(int tileCoordinate) {
@@ -22,7 +23,7 @@ public abstract class Tile {
         //represents a tile without a piece
     public static final class EmptyTile extends Tile {
 
-        EmptyTile(int coordinate) {
+        EmptyTile(final int coordinate) {
             super(coordinate);
         }
 
@@ -41,7 +42,8 @@ public abstract class Tile {
         //represents a tile with a piece placed
     public static final class OccupiedTile extends Tile {
 
-        Piece pieceOnTile;
+            //only allow piece to be set in constructor
+        private final Piece pieceOnTile;
 
             //place the coordinate and the piece on the tile
         OccupiedTile(int tileCoordinate, Piece pieceOnTile) {
