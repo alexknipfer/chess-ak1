@@ -15,7 +15,7 @@ public abstract class Tile {
         //only allow tile coordinate to be set in constructor
     protected final int tileCoordinate;
 
-    private static final Map<Integer, EmptyTile> EMPTY_TILES = createAllPossibleEmptyTiles();
+    private static final Map<Integer, EmptyTile> EMPTY_TILES_CACHE = createAllPossibleEmptyTiles();
 
         //give the tile an initial coordinate
     private Tile(int tileCoordinate) {
@@ -27,7 +27,7 @@ public abstract class Tile {
     public abstract Piece getPiece();
 
     public static Tile createTile(final int tileCoordinate, final Piece piece) {
-        return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES.get(tileCoordinate);
+        return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES_CACHE.get(tileCoordinate);
     }
 
         //initialize map of empty tiles
@@ -48,7 +48,7 @@ public abstract class Tile {
         //represents a tile without a piece
     public static final class EmptyTile extends Tile {
 
-        EmptyTile(final int coordinate) {
+        private EmptyTile(final int coordinate) {
             super(coordinate);
         }
 
@@ -71,7 +71,7 @@ public abstract class Tile {
         private final Piece pieceOnTile;
 
             //place the coordinate and the piece on the tile
-        OccupiedTile(int tileCoordinate, Piece pieceOnTile) {
+        private OccupiedTile(int tileCoordinate, Piece pieceOnTile) {
             super(tileCoordinate);
             this.pieceOnTile = pieceOnTile;
         }
