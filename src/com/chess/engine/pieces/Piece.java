@@ -20,7 +20,11 @@ public abstract class Piece {
         this.piecePosition = piecePosition;
     }
 
-        //create a lsit of all legal moves for any given piece
+    public Alliance getPieceAlliance() {
+        return this.pieceAlliance;
+    }
+
+        //create a list of all legal moves for any given piece
     public abstract List<Move> calculateLegalMoves(final Board board);
 
 }
