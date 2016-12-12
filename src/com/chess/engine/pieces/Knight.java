@@ -2,6 +2,7 @@ package com.chess.engine.pieces;
 
 import com.chess.engine.Alliance;
 import com.chess.engine.board.Board;
+import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
 import com.google.common.collect.ImmutableList;
@@ -33,7 +34,7 @@ public class Knight extends Piece {
             candidateDestinationCoordinate = this.piecePosition + currentCandidate;
 
                 //check to see if tile is valid (i.e inside the board coordinates)
-            if(true /* isValidTileCoordinate */) {
+            if(BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
 
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
 
