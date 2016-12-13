@@ -36,7 +36,7 @@ public abstract class Tile {
         final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();
 
             //place empty tiles
-        for(int i = 0; i < 64; i++) {
+        for(int i = 0; i < BoardUtils.NUM_TILES; i++) {
             emptyTileMap.put(i, new EmptyTile(i));
         }
 
