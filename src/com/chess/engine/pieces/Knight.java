@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static com.chess.engine.board.Move.*;
+
 /**
  * Created by alex on 12/10/16.
  */
@@ -23,7 +25,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public Collection<Move> calculateLegalMoves(Board board) {
+    public Collection<Move> calculateLegalMoves(final Board board) {
 
         final List<Move> legalMoves = new ArrayList<>();        //list to obtain all legal move of current knight
 
@@ -47,7 +49,7 @@ public class Knight extends Piece {
 
                     //check to see if destination tile does not have a piece on it
                 if(!candidateDestinationTile.isTileOccupied()) {
-                    legalMoves.add(new Move());
+                    legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                 }
 
                     //destination tile HAS a piece on it (occupied)
@@ -57,7 +59,7 @@ public class Knight extends Piece {
 
                         //check to see if occupied piece is of opposite color
                     if(this.pieceAlliance != pieceAlliance) {
-                        legalMoves.add(new Move());
+                        legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
                     }
                 }
             }
