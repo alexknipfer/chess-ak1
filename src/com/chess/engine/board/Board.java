@@ -1,8 +1,12 @@
 package com.chess.engine.board;
 
 /**
- * Created by alex on 12/10/16.
+ * This class represents the entire chess board composed of Tiles.
+ *
+ * @author Alex Knipfer
+ *
  */
+
 public class Board {
 
     public Tile getTile(final int tileCoordinate) {
