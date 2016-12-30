@@ -14,8 +14,12 @@ import java.util.List;
 import static com.chess.engine.board.Move.*;
 
 /**
- * Created by alex on 12/10/16.
+ * This class represents a single Knight on the chess board.
+ *
+ * @author Alex Knipfer
+ *
  */
+
 public class Knight extends Piece {
 
     private final static int[] CANDIDATE_MOVE_COORDINATES = { -17, -15, -10, -6, 6, 10, 15, 17};

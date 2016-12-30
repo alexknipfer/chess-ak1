@@ -12,8 +12,13 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by alex on 12/14/16.
+ * This class represents a single Bishop on the chess board.
+ *
+ * @author Alex Knipfer
+ *
  */
+
+
 public class Bishop extends Piece {
 
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = { -9, -7, 7, 9 };
@@ -22,6 +27,14 @@ public class Bishop extends Piece {
     Bishop(int piecePosition, Alliance pieceAlliance) {
         super(piecePosition, pieceAlliance);
     }
+
+
+    /**
+     * This method calculates the legal moves of any given bishop
+     *
+     * @param board the current chess board
+     * @return collection of legal moves for the Bishop
+     */
 
     @Override
     public Collection<Move> calculateLegalMoves(final Board board) {
@@ -72,12 +85,27 @@ public class Bishop extends Piece {
         return ImmutableList.copyOf(legalMoves);
     }
 
-        //check to see if bishop is currently in the first column
+    /**
+     * This method checks to see if the current bishop is in the first column.
+     * If so, check to see if the offset is legal (i.e within the board bounds).
+     *
+     * @param currentPosition current position of bishop
+     * @param candidateOffset the offset in which the piece is moving to
+     * @return true if move is illegal due to exclusion
+     */
+
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {
         return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == -9 || candidateOffset == 7);
     }
 
-        //check to see if the bishop is currently in the eighth column
+    /**
+     * This method checks to see if the current bishop is in the eighth column.
+     * If so, check to see if the offset is legal (i.e within the board bounds).
+     *
+     * @param currentPosition current position of bishop
+     * @param candidateOffset the offset in which the piece is moving to
+     * @return true if the move is illegal due to exclusion
+     */
     private static boolean isEightColumnExclusion(final int currentPosition, final int candidateOffset) {
         return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffset == -7 || candidateOffset == 9);
     }
